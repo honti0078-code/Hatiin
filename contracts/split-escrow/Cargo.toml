@@ -1,0 +1,17 @@
+[package]
+name = "split-escrow"
+version = "0.1.0"
+edition = "2021"
+publish = false
+license = "MIT"
+description = "Soroban split-the-bill escrow: participants fund their shares on-chain, the contract releases to the bill creator once fully funded, refunds if abandoned (Hatiin)."
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = "22"
+
+[dev-dependencies]
+soroban-sdk = { version = "22", features = ["testutils"] }
