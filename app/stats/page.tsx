@@ -14,12 +14,11 @@ import { useCallback, useEffect, useState } from 'react';
 
 interface Stats {
   uniqueWallets: number;
-  totalLogins: number;
+  logins: number;
   totalBills: number;
   settledBills: number;
   totalParticipants: number;
   paidParticipants: number;
-  perDay: Array<{ date: string; users: number; logins: number }>;
   generatedAt: string;
 }
 
@@ -69,8 +68,6 @@ export default function StatsPage() {
   useEffect(() => {
     load();
   }, [load]);
-
-  const maxDay = stats?.perDay.reduce((m, d) => Math.max(m, d.logins), 0) ?? 0;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-orange-50">
@@ -124,7 +121,7 @@ export default function StatsPage() {
               <Metric
                 icon={LogIn}
                 label="Total logins"
-                value={stats.totalLogins}
+                value={stats.logins}
                 hint="wallet sign-ins"
               />
               <Metric
@@ -145,32 +142,6 @@ export default function StatsPage() {
                 value={stats.paidParticipants}
                 hint="on-chain settlements"
               />
-            </div>
-
-            <div className="mt-10">
-              <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-400">
-                Daily sign-ins (last 14 days)
-              </h2>
-              {stats.perDay.length === 0 ? (
-                <p className="text-sm text-gray-400">No sign-ins yet.</p>
-              ) : (
-                <div className="space-y-1.5">
-                  {stats.perDay.map((d) => (
-                    <div key={d.date} className="flex items-center gap-3 text-sm">
-                      <span className="w-24 shrink-0 font-mono text-xs text-gray-400">{d.date}</span>
-                      <div className="h-5 flex-1 overflow-hidden rounded bg-amber-50">
-                        <div
-                          className="h-full rounded bg-amber-500"
-                          style={{ width: `${maxDay ? (d.logins / maxDay) * 100 : 0}%` }}
-                        />
-                      </div>
-                      <span className="w-28 shrink-0 text-right text-xs text-gray-400">
-                        {d.users} users · {d.logins} logins
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
             </div>
 
             <p className="mt-8 text-xs text-gray-400">

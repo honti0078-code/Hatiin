@@ -16,24 +16,24 @@ That's the part worth slowing down for. When the bill settles in XLM, Hatiin doe
 
 No one can release the money early. No one can divert it. And if a bill falls apart — gets cancelled, or nobody finishes funding it before the deadline — every person can pull *their own* share back out, on-chain, no questions asked. The money is never held by Hatiin, and it's never stuck.
 
-![Hatiin landing page](../screen-shot/01-landing.jpg)
+![Hatiin landing page](screen-shot/01-landing.jpg)
 
 ## How a bill actually moves
 
 You sign in by proving you own your wallet, not by making a password. Hatiin uses **SEP-10**: the server hands Freighter a challenge, Freighter signs it, the server checks the signature against your Stellar public key and opens a session. That's the whole login.
 
-![Connect with Freighter](../screen-shot/02-freighter-connect.jpg)
+![Connect with Freighter](screen-shot/02-freighter-connect.jpg)
 
 Opening a bill moves no money, so the organizer doesn't even need a wallet balance for it — Hatiin's deployer key signs the contract's `open_bill` server-side, and the bill is live on-chain before anyone's paid a cent.
 
 Then each participant gets their own pay page. They tap **Pay with Freighter**; the server builds the exact `pay_share` contract call; Freighter pops up so they can read it and sign it themselves; the server submits it over **Soroban RPC**. Their XLM moves into the escrow, and a real transaction hash comes back with a link to stellar.expert. Nothing is simulated. Every share is a real testnet transaction you can go look up.
 
-![A participant's pay screen](../screen-shot/03-pay-screen.jpg)
-![Signing the pay_share invoke in Freighter](../screen-shot/04-freighter-sign.jpg)
+![A participant's pay screen](screen-shot/03-pay-screen.jpg)
+![Signing the pay_share invoke in Freighter](screen-shot/04-freighter-sign.jpg)
 
 The contribution that tips the pool over the line is the one that settles everything — `pay_share` releases the full pot to the organizer atomically, in the same call that completed the funding.
 
-![Share funded into the escrow, settled on-chain](../screen-shot/05-pay-success.jpg)
+![Share funded into the escrow, settled on-chain](screen-shot/05-pay-success.jpg)
 
 And because nobody wants to sit on a page hitting refresh, the bill is alive. Hatiin streams payment events from Horizon and pushes them out over server-sent events, so the participant pills flip from pending to paid the instant each contribution confirms — on every open tab at once. When the final share lands and the contract settles, the whole group sees it settle together. A blockchain confirmation turns into a small shared moment instead of a private one.
 
@@ -47,11 +47,15 @@ If a group would rather settle in a stablecoin, **USDC** is one tap away. The ca
 
 There's a public **stats** page, and it isn't decorative — it reads real usage out of the database: unique wallet users, total logins, bills created, participants added, and shares actually paid, plus a per-day login chart. It's the honest scoreboard for whether anyone's really using the thing.
 
-![Public usage stats](../screen-shot/06-stats.jpg)
+![Public usage stats](screen-shot/stats.jpg)
+
+| Wallets | Logins | Bills | Settled | Participants | Shares paid |
+|---:|---:|---:|---:|---:|---:|
+| 111 | 137 | 46 | 18 | 62 | 24 |
 
 The whole app is built mobile-first, because splitting a bill happens at the table, on a phone, with the receipt still warm.
 
-![Mobile view](../screen-shot/07-mobile.jpg)
+![Mobile view](screen-shot/07-mobile.jpg)
 
 ## What's under the hood
 

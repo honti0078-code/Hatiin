@@ -12,12 +12,11 @@ const DEMO_KEYS = [
 
 export interface UsageStats {
   uniqueWallets: number;
-  totalLogins: number;
+  logins: number;
   totalBills: number;
   settledBills: number;
   totalParticipants: number;
   paidParticipants: number;
-  perDay: Array<{ date: string; users: number; logins: number }>;
   generatedAt: string;
 }
 
@@ -55,24 +54,13 @@ export async function getUsageStats(): Promise<UsageStats> {
         join bills b on b.id = p.bill_id
         where b.creator_public_key not in ${demo} and p.status = 'paid'`,
   );
-  const perDay = await rows(
-    sql`select to_char(created_at,'YYYY-MM-DD') date, count(distinct public_key)::int users, count(*)::int logins
-        from sessions where public_key not in ${demo}
-        group by 1 order by 1 desc limit 14`,
-  );
-
   return {
     uniqueWallets: num(wallets?.c),
-    totalLogins: num(logins?.c),
+    logins: num(logins?.c),
     totalBills: num(billsTotal?.c),
     settledBills: num(billsSettled?.c),
     totalParticipants: num(partsTotal?.c),
     paidParticipants: num(partsPaid?.c),
-    perDay: perDay.map((r) => ({
-      date: String(r.date),
-      users: num(r.users),
-      logins: num(r.logins),
-    })),
     generatedAt: new Date().toISOString(),
   };
 }
