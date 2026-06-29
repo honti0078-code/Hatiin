@@ -43,6 +43,13 @@ Hatiin settles in **native XLM** out of the box. XLM needs no trustline, so any 
 
 If a group would rather settle in a stablecoin, **USDC** is one tap away. The catch with any Stellar asset that isn't XLM is the trustline — try to receive USDC without one and you hit `op_no_trust`. So Hatiin ships the fix inside the app: an **Enable USDC** button that builds a `changeTrust` operation, has you sign it in Freighter, and submits it to Horizon. One tap, and your wallet can hold USDC. (USDC bills settle as a direct classic Stellar payment rather than through the escrow contract.)
 
+---
+## Demo & Pitch Deck
+
+- **Demo Video:** [Watch Demo](https://drive.google.com/file/d/1GIPX8TUcZYYBrXJGwkYNYzvY7YAVuJzI/view?usp=drive_link)
+- **Pitch Deck:** [View Pitch Deck](https://drive.google.com/file/d/1Hokf2w2OoxRtwGtsSNqLUM4X27el0pd1/view?usp=drive_link)
+---
+
 ## Watching it add up
 
 There's a public **stats** page, and it isn't decorative — it reads real usage out of the database: unique wallet users, total logins, bills created, participants added, and shares actually paid, plus a per-day login chart. It's the honest scoreboard for whether anyone's really using the thing.
