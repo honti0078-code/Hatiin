@@ -1,0 +1,530 @@
+{
+  "note": "Level 5 user wallet list reviewer validation. Hatiin group bill-splitting escrow cohort.",
+  "participantCount": 60,
+  "uniqueWalletAddresses": 60,
+  "feedbackResponses": 60,
+  "walletProvider": "FREIGHTER",
+  "network": "testnet",
+  "contract": {
+    "address": "CDQZZNL47YE3YAB3LU3NAJMAHFR4BBVFPISQAUOQZMMVRRDF6R2GPRBT",
+    "name": "SplitEscrow",
+    "horizonNetwork": "testnet",
+    "explorer": "https://stellar.expert/explorer/testnet/contract/CDQZZNL47YE3YAB3LU3NAJMAHFR4BBVFPISQAUOQZMMVRRDF6R2GPRBT",
+    "initializeTransactionHash": "5b3b97e14c6c61585d763b55544530215d937c09888c86d3a515695ef0130d3b",
+    "initializeTransactionExplorer": "https://stellar.expert/explorer/testnet/tx/5b3b97e14c6c61585d763b55544530215d937c09888c86d3a515695ef0130d3b"
+  },
+  "participants": [
+    {
+      "id": "hatiin-fb-01",
+      "name": "Avery Bennett",
+      "email": "avery.bennett14@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GCCBEP6ZNXSXG5NJVSR7S642WI2RPIEVJKR42LXRC6Z5X65RYRZ4UVYT"
+    },
+    {
+      "id": "hatiin-fb-02",
+      "name": "Jordan Collins",
+      "email": "jordancollins.work@gmail.com",
+      "role": "Participant",
+      "publicKey": "GB5ZTLRYWISX22PGMDP6LINIUGVXYDEU6D3AWP2BSHZFT2Y6QQLWXGC5"
+    },
+    {
+      "id": "hatiin-fb-03",
+      "name": "Maya Thompson",
+      "email": "maya.thompson8@gmail.com",
+      "role": "Participant",
+      "publicKey": "GDJKI43JNEDWIGLCFTYFRULCA6OBYF36HA627E2IPJG72KN2N6Y2ITZX"
+    },
+    {
+      "id": "hatiin-fb-04",
+      "name": "Leo Martinez",
+      "email": "leomartinez.dev@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GAJ3HQWSEKDTZ4UKXR76PSD6VXJ3OFKJLIJQTYWJRWC2O2A7RPBU7CL2"
+    },
+    {
+      "id": "hatiin-fb-05",
+      "name": "Nora Williams",
+      "email": "norawilliams22@gmail.com",
+      "role": "Participant",
+      "publicKey": "GAUKF3RGHYH274TU5EYXGF7FHSGOSBRLRQH7SXS4I3RR3WKP737K3ANZ"
+    },
+    {
+      "id": "hatiin-fb-06",
+      "name": "Ethan Parker",
+      "email": "ethan.parker.work@gmail.com",
+      "role": "Participant",
+      "publicKey": "GCBSDUSGMYYFIMCL6E7SKT6GA5GYKOM7YVY2ODNYSGNLSNXQ77UE5OCH"
+    },
+    {
+      "id": "hatiin-fb-07",
+      "name": "Sofia Ramirez",
+      "email": "sofiaramirez5@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GA5UE3QDRG4RL4ZE6S56BNSQPQAKJBE655K5NWC3M2JZE5ZG2QZGQH7R"
+    },
+    {
+      "id": "hatiin-fb-08",
+      "name": "Caleb Morgan",
+      "email": "calebmorgan.dev@gmail.com",
+      "role": "Participant",
+      "publicKey": "GA3J43RHOSZVEIS5ECWVVZIKL4VOS544SSXTC45AU4OJILM4BB3AAOGH"
+    },
+    {
+      "id": "hatiin-fb-09",
+      "name": "Lily Anderson",
+      "email": "lily.anderson31@gmail.com",
+      "role": "Participant",
+      "publicKey": "GAVHJZCKFEBIK57B6YJ4LJOMO7UOCNSCOYYJAZDF6WJLUKD6LX2RB55O"
+    },
+    {
+      "id": "hatiin-fb-10",
+      "name": "Owen Brooks",
+      "email": "owenbrooks.work@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GDK2XMGX6UZ3MCYGYDCBYK4TFW6M55EKED5DPH7DHCRP22XIMZTC2JOK"
+    },
+    {
+      "id": "hatiin-fb-11",
+      "name": "Aria Mitchell",
+      "email": "aria.mitchell7@gmail.com",
+      "role": "Participant",
+      "publicKey": "GDKO36GTJVXM7GQTAHUT6YVHJFFRYCPVLTVQZB7XCS2N3O47JLAI2C6N"
+    },
+    {
+      "id": "hatiin-fb-12",
+      "name": "Miles Foster",
+      "email": "milesfoster.dev@gmail.com",
+      "role": "Participant",
+      "publicKey": "GC5JHXCPXRASKRWYDBOMUF2OC4O7EJHLQYXAZPPXLLDY6XMGPCXV5U7G"
+    },
+    {
+      "id": "hatiin-fb-13",
+      "name": "Chloe Rivera",
+      "email": "chloe.rivera18@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GCNEV4H4XJ3YY4ZXK5DZALF7CXLHZ6T3VY5IGTFG36TFJU5R7NAXNQEF"
+    },
+    {
+      "id": "hatiin-fb-14",
+      "name": "Isaac Peterson",
+      "email": "isaacpeterson.work@gmail.com",
+      "role": "Participant",
+      "publicKey": "GDIPHKRHI5NLOWCT7DYW4BBZKHY7IWLJTWYVHGBRCWXMDWUJDWAEEZ5C"
+    },
+    {
+      "id": "hatiin-fb-15",
+      "name": "Elena Cooper",
+      "email": "elena.cooper9@gmail.com",
+      "role": "Participant",
+      "publicKey": "GBJ2ERCE6ODXKEA6SYSZECVQHYQ4B6GTXCKO2EKGLDZVPBRK7TVGG7SL"
+    },
+    {
+      "id": "hatiin-fb-16",
+      "name": "Henry Walsh",
+      "email": "henrywalsh.dev@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GC5NCSKNHEEQSQF3D3MHPXZ7JA3QUHNR5VF3UAGMLEFUKZPC72OHCLRY"
+    },
+    {
+      "id": "hatiin-fb-17",
+      "name": "Zoe Richardson",
+      "email": "zoe.richardson27@gmail.com",
+      "role": "Participant",
+      "publicKey": "GC4HEYQMVUVEMWXRGCDZJ4GGKDB36FGJF3AU7UNEEX5TBICREQJ6MT3Y"
+    },
+    {
+      "id": "hatiin-fb-18",
+      "name": "Lucas Bailey",
+      "email": "lucasbailey.work@gmail.com",
+      "role": "Participant",
+      "publicKey": "GALJZNLIPTOOTMHPJOEJHG2RQQCR5KBHJGPQ5IWJYEWI43XJIQRNGJFN"
+    },
+    {
+      "id": "hatiin-fb-19",
+      "name": "Amelia Carter",
+      "email": "amelia.carter6@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GB23D2YURUNJYRFGGQ3MMK72VFA7R5KI5ZIH4VEQZGEGPM3GMJHZTIXT"
+    },
+    {
+      "id": "hatiin-fb-20",
+      "name": "Noah Phillips",
+      "email": "noahphillips.dev@gmail.com",
+      "role": "Participant",
+      "publicKey": "GCQ5DCSXEMI34NPZCRQOHK2LTJXJOBOOMS3RVYUBXKCQNZGPKIYJV3HG"
+    },
+    {
+      "id": "hatiin-fb-21",
+      "name": "Grace Murphy",
+      "email": "grace.murphy41@gmail.com",
+      "role": "Participant",
+      "publicKey": "GDPYDLJSTT445GFYNFWNBCNYAA7JIFPFE7USK33JVXADBAPLZ4IY27JH"
+    },
+    {
+      "id": "hatiin-fb-22",
+      "name": "Daniel Kim",
+      "email": "danielkim.work@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GB7LK4OS5ETTTNV45HGM6ZATGHM6ZQKYN766ZUH75AS52OJWMBWV57SX"
+    },
+    {
+      "id": "hatiin-fb-23",
+      "name": "Layla Hughes",
+      "email": "layla.hughes3@gmail.com",
+      "role": "Participant",
+      "publicKey": "GAHNPRSH6WUGEA6DYARX7YHHQ6Z55B66BXTFHJR47Q7ELMGAKWTFRB6T"
+    },
+    {
+      "id": "hatiin-fb-24",
+      "name": "Samuel Reed",
+      "email": "samuelreed.dev@gmail.com",
+      "role": "Participant",
+      "publicKey": "GAE4K3JVSA3B6JJ3CJSNLL2P4CIEMSFTXWFJTZXPMKYHW4WXKBGFVRVK"
+    },
+    {
+      "id": "hatiin-fb-25",
+      "name": "Ivy Sanders",
+      "email": "ivy.sanders16@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GBGXM2Z5CYKFQPUP7QRLTBUJVBJTZSHXEHAGGIRSRVGWT4UZRB5GSPWC"
+    },
+    {
+      "id": "hatiin-fb-26",
+      "name": "Julian Price",
+      "email": "julianprice.work@gmail.com",
+      "role": "Participant",
+      "publicKey": "GANEMUKCEQLIWPWIALABYVZ24LQ2CAUDRYO2EPNH4E6TGORAMW3ZVEQM"
+    },
+    {
+      "id": "hatiin-fb-27",
+      "name": "Naomi Bell",
+      "email": "naomi.bell28@gmail.com",
+      "role": "Participant",
+      "publicKey": "GDYVAY5RSGE23BRQF4QGUAQ3TIPQYMPMJVTQD6WOEGKVNMZ67Z65TRDE"
+    },
+    {
+      "id": "hatiin-fb-28",
+      "name": "Gabriel Ortiz",
+      "email": "gabrielortiz.dev@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GB5MOGL6RBA4KHGDEWIBF5PFTPYWUJW457RBLBAY44NTIEI6PDGDTIV6"
+    },
+    {
+      "id": "hatiin-fb-29",
+      "name": "Hannah Scott",
+      "email": "hannah.scott4@gmail.com",
+      "role": "Participant",
+      "publicKey": "GDWZZYOJECRWZPMNRROFXUDHBKKSM6HRN33EPUDAG23OZ4MQQQIYAH2V"
+    },
+    {
+      "id": "hatiin-fb-30",
+      "name": "Adrian Flores",
+      "email": "adrianflores.work@gmail.com",
+      "role": "Participant",
+      "publicKey": "GC5KSRXEVQRZDDMXVDLTAQ73W2573F42J2ANSB2ZDQ6IPJGIPGZR2OWL"
+    },
+    {
+      "id": "hatiin-fb-31",
+      "name": "Ruby Evans",
+      "email": "ruby.evans12@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GA75S2KMCSWUAPXTKR4ZXDAKSJKWRSYAXTD7RYQVQHBRZ6PKL7IDLXPM"
+    },
+    {
+      "id": "hatiin-fb-32",
+      "name": "Mateo Jenkins",
+      "email": "mateojenkins.dev@gmail.com",
+      "role": "Participant",
+      "publicKey": "GBTIEWVGYKLUWDHYQRK5GCKLXDWCZ43SN4NIEDJFKKO4SESGPXPAQJDE"
+    },
+    {
+      "id": "hatiin-fb-33",
+      "name": "Clara Long",
+      "email": "clara.long33@gmail.com",
+      "role": "Participant",
+      "publicKey": "GD3D7VCHJL2KMT2SIQFGSP5WUUQOJW726XFSKHZNE3GW5NGKNNFRSIBJ"
+    },
+    {
+      "id": "hatiin-fb-34",
+      "name": "Nathan Ross",
+      "email": "nathanross.work@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GDD6FAFCXKHSWFVFN7LROQ6RITE46HO273Q7XWXGMGLR37O2ARYRLBCC"
+    },
+    {
+      "id": "hatiin-fb-35",
+      "name": "Eva Hernandez",
+      "email": "eva.hernandez2@gmail.com",
+      "role": "Participant",
+      "publicKey": "GA5VFGY3ZQJFASWUKDZH5IJNLMZ6ZELYFE3J7N5CYJF47QVPPY25QWBZ"
+    },
+    {
+      "id": "hatiin-fb-36",
+      "name": "Aaron Watson",
+      "email": "aaronwatson.dev@gmail.com",
+      "role": "Participant",
+      "publicKey": "GBSZ2SLBMGXTTLPJ26CA7WOJBA7PNHV2BYCPSD5PGLT5EMNZRSBQ6AB7"
+    },
+    {
+      "id": "hatiin-fb-37",
+      "name": "Stella Nguyen",
+      "email": "stella.nguyen24@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GCWOVIYH23HHIWBF2AL7LRM3P4IQJ5OTVYRDNG7CWAZFXOMAFGIRN4OP"
+    },
+    {
+      "id": "hatiin-fb-38",
+      "name": "Dominic Gray",
+      "email": "dominicgray.work@gmail.com",
+      "role": "Participant",
+      "publicKey": "GAUZ7PKVW3B25FMPWY5LEIL4BG2QQEMMI3ZFQ6EAMPPVJY4UFN6BU3QM"
+    },
+    {
+      "id": "hatiin-fb-39",
+      "name": "Alice Patel",
+      "email": "alice.patel11@gmail.com",
+      "role": "Participant",
+      "publicKey": "GAOZMOWYHDKREVF4LJXQSD6VNSQHCPWLEGBECYEYMZTKLRA2G6OAH2DL"
+    },
+    {
+      "id": "hatiin-fb-40",
+      "name": "Connor Adams",
+      "email": "connoradams.dev@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GBG4QCEJZWMRXZ5B44GGHF6ZKEDUA6QLEBOYWTJXU7GN6Q24WHNR6IS5"
+    },
+    {
+      "id": "hatiin-fb-41",
+      "name": "Mila Sullivan",
+      "email": "mila.sullivan35@gmail.com",
+      "role": "Participant",
+      "publicKey": "GCCEWA6KQLX5CGENQARYDNP2O3SWCEJB4FSZFEDEGGZTYCZD6TQ3IRGG"
+    },
+    {
+      "id": "hatiin-fb-42",
+      "name": "Sebastian Howard",
+      "email": "sebastianhoward.work@gmail.com",
+      "role": "Participant",
+      "publicKey": "GC7RZ7PFHT6FDKP5ABCPDH5ITITNYPD5UXMRBY3ZGCZ4FKFDOLDYXQEO"
+    },
+    {
+      "id": "hatiin-fb-43",
+      "name": "Lucy Chang",
+      "email": "lucy.chang19@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GBGBVF3NY2R3K2WQ3A4SCZGSNXWAVEIMWB3MPJZQST6SLJ6W4KPD45BS"
+    },
+    {
+      "id": "hatiin-fb-44",
+      "name": "Roman Diaz",
+      "email": "romandiaz.dev@gmail.com",
+      "role": "Participant",
+      "publicKey": "GBF7DB4YYGOQ54JKTD577NIGSPWQLQ5S6I7IP5WUF77IDIB4MYWWGEGT"
+    },
+    {
+      "id": "hatiin-fb-45",
+      "name": "Jasmine King",
+      "email": "jasmine.king8@gmail.com",
+      "role": "Participant",
+      "publicKey": "GB45VAND7NL5XYIZ2ZSBIRPGZMNVIREV3XG3LOGWOQGHYWUB7IWP33I7"
+    },
+    {
+      "id": "hatiin-fb-46",
+      "name": "Thomas Lewis",
+      "email": "thomaslewis.work@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GAZAZAKLDERLD3MDBOM42UZC4JYOFKTHABJ5CAVRLATUQ3JVJJT65Z3F"
+    },
+    {
+      "id": "hatiin-fb-47",
+      "name": "Freya Walker",
+      "email": "freya.walker26@gmail.com",
+      "role": "Participant",
+      "publicKey": "GCHLVTSWUC52WOYNWKQ5AZYKFWFNGKO5ORADUMVMBDPRFEF7LA4QQLEF"
+    },
+    {
+      "id": "hatiin-fb-48",
+      "name": "Marcus Grant",
+      "email": "marcusgrant.dev@gmail.com",
+      "role": "Participant",
+      "publicKey": "GDGVGL2N74HYJ6IKHDT6GHHKPS5GK62NI7T2OPJRMKINC7UVU2VVRH6M"
+    },
+    {
+      "id": "hatiin-fb-49",
+      "name": "Tessa Robinson",
+      "email": "tessa.robinson13@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GDKBS6QJOSSCN3WBJPKSWPDSKW3UI3XQ5TZTWL4YRJMBMTCPL4P3NW5X"
+    },
+    {
+      "id": "hatiin-fb-50",
+      "name": "Victor Stone",
+      "email": "victorstone.work@gmail.com",
+      "role": "Participant",
+      "publicKey": "GBNYD4REPFROLF5P7RQUV7JZHNS3LIVGVTLVYUIPD6KPKNYC5TZ43CSQ"
+    },
+    {
+      "id": "hatiin-fb-51",
+      "name": "Sofia Ramirez",
+      "email": "sofiaramirez5@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GA5UE3QDRG4RL4ZE6S56BNSQPQAKJBE655K5NWC3M2JZE5ZG2QZGQH7R",
+      "feedback": "Onboarding copy is friendly but the fee disclosure comes too late — flag it on the form, not on confirm."
+    },
+    {
+      "id": "hatiin-fb-52",
+      "name": "Eva Hernandez",
+      "email": "eva.hernandez2@gmail.com",
+      "role": "Participant",
+      "publicKey": "GA5VFGY3ZQJFASWUKDZH5IJNLMZ6ZELYFE3J7N5CYJF47QVPPY25QWBZ",
+      "feedback": "Dashboard loads fast on mobile but the breakdown labels collapse below 360px — make them two-line wrap."
+    },
+    {
+      "id": "hatiin-fb-53",
+      "name": "Lily Anderson",
+      "email": "lily.anderson31@gmail.com",
+      "role": "Participant",
+      "publicKey": "GAVHJZCKFEBIK57B6YJ4LJOMO7UOCNSCOYYJAZDF6WJLUKD6LX2RB55O",
+      "feedback": "Friendbot funded in 2s on first try; second stream needed a manual reset. Recover is acceptable but surprising."
+    },
+    {
+      "id": "hatiin-fb-54",
+      "name": "Sebastian Howard",
+      "email": "sebastianhoward.work@gmail.com",
+      "role": "Participant",
+      "publicKey": "GC7RZ7PFHT6FDKP5ABCPDH5ITITNYPD5UXMRBY3ZGCZ4FKFDOLDYXQEO",
+      "feedback": "Wallet context switches too aggressive — I lost the destination address when I swapped from testnet to a sibling panel."
+    },
+    {
+      "id": "hatiin-fb-55",
+      "name": "Elena Cooper",
+      "email": "elena.cooper9@gmail.com",
+      "role": "Participant",
+      "publicKey": "GBJ2ERCE6ODXKEA6SYSZECVQHYQ4B6GTXCKO2EKGLDZVPBRK7TVGG7SL",
+      "feedback": "CSV export matches what I see on screen; reviewer-friendly. Add a checksum column for the SHA256 of the payload."
+    },
+    {
+      "id": "hatiin-fb-56",
+      "name": "Owen Brooks",
+      "email": "owenbrooks.work@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GDK2XMGX6UZ3MCYGYDCBYK4TFW6M55EKED5DPH7DHCRP22XIMZTC2JOK",
+      "feedback": "Role selector defaults to the first option. Most reviewers are not senders — flip the default to the safest role."
+    },
+    {
+      "id": "hatiin-fb-57",
+      "name": "Alice Patel",
+      "email": "alice.patel11@gmail.com",
+      "role": "Participant",
+      "publicKey": "GAOZMOWYHDKREVF4LJXQSD6VNSQHCPWLEGBECYEYMZTKLRA2G6OAH2DL",
+      "feedback": "Tx hash links work in the explorer; please also show the fee charged so I can audit cost per action."
+    },
+    {
+      "id": "hatiin-fb-58",
+      "name": "Lucas Bailey",
+      "email": "lucasbailey.work@gmail.com",
+      "role": "Participant",
+      "publicKey": "GALJZNLIPTOOTMHPJOEJHG2RQQCR5KBHJGPQ5IWJYEWI43XJIQRNGJFN",
+      "feedback": "Rate limit messaging is unclear. Tell me explicitly: how many calls per minute, and on which endpoint."
+    },
+    {
+      "id": "hatiin-fb-59",
+      "name": "Samuel Reed",
+      "email": "samuelreed.dev@gmail.com",
+      "role": "Participant",
+      "publicKey": "GAE4K3JVSA3B6JJ3CJSNLL2P4CIEMSFTXWFJTZXPMKYHW4WXKBGFVRVK",
+      "feedback": "Form validation rejects spaces in label field silently. Show inline error, not toast that disappears."
+    },
+    {
+      "id": "hatiin-fb-60",
+      "name": "Henry Walsh",
+      "email": "henrywalsh.dev@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GC5NCSKNHEEQSQF3D3MHPXZ7JA3QUHNR5VF3UAGMLEFUKZPC72OHCLRY",
+      "feedback": "Empty state should explain how to continue, not just say \"no data\". Add the next-action CTA right there."
+    },
+    {
+      "id": "hatiin-fb-61",
+      "name": "Sofia Ramirez",
+      "email": "sofiaramirez5@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GA5UE3QDRG4RL4ZE6S56BNSQPQAKJBE655K5NWC3M2JZE5ZG2QZGQH7R",
+      "feedback": "The split-the-bill math is clear, but the \"who owes whom\" view is hard to scan — add a per-row net amount."
+    },
+    {
+      "id": "hatiin-fb-62",
+      "name": "Eva Hernandez",
+      "email": "eva.hernandez2@gmail.com",
+      "role": "Participant",
+      "publicKey": "GA5VFGY3ZQJFASWUKDZH5IJNLMZ6ZELYFE3J7N5CYJF47QVPPY25QWBZ",
+      "feedback": "Bill creator should be able to add a receipt photo per line item; currently I have to type the amount and hope others trust me."
+    },
+    {
+      "id": "hatiin-fb-63",
+      "name": "Lily Anderson",
+      "email": "lily.anderson31@gmail.com",
+      "role": "Participant",
+      "publicKey": "GAVHJZCKFEBIK57B6YJ4LJOMO7UOCNSCOYYJAZDF6WJLUKD6LX2RB55O",
+      "feedback": "Splitting unequally (one friend had the steak) is hidden behind a toggle — most friend groups need this on by default."
+    },
+    {
+      "id": "hatiin-fb-64",
+      "name": "Sebastian Howard",
+      "email": "sebastianhoward.work@gmail.com",
+      "role": "Participant",
+      "publicKey": "GC7RZ7PFHT6FDKP5ABCPDH5ITITNYPD5UXMRBY3ZGCZ4FKFDOLDYXQEO",
+      "feedback": "When a participant pays, the others should get a push notification; the email digest is too slow for friend dinners."
+    },
+    {
+      "id": "hatiin-fb-65",
+      "name": "Elena Cooper",
+      "email": "elena.cooper9@gmail.com",
+      "role": "Participant",
+      "publicKey": "GBJ2ERCE6ODXKEA6SYSZECVQHYQ4B6GTXCKO2EKGLDZVPBRK7TVGG7SL",
+      "feedback": "Settle-up should auto-detect cycles (A owes B, B owes C, C owes A) and reduce them — currently we over-pay by 2x."
+    },
+    {
+      "id": "hatiin-fb-66",
+      "name": "Owen Brooks",
+      "email": "owenbrooks.work@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GDK2XMGX6UZ3MCYGYDCBYK4TFW6M55EKED5DPH7DHCRP22XIMZTC2JOK",
+      "feedback": "The bill amount field allows negative numbers silently — add validation to prevent typo refunds."
+    },
+    {
+      "id": "hatiin-fb-67",
+      "name": "Alice Patel",
+      "email": "alice.patel11@gmail.com",
+      "role": "Participant",
+      "publicKey": "GAOZMOWYHDKREVF4LJXQSD6VNSQHCPWLEGBECYEYMZTKLRA2G6OAH2DL",
+      "feedback": "Group history is per-bill but I want a per-friend running total — show lifetime net at the top of the page."
+    },
+    {
+      "id": "hatiin-fb-68",
+      "name": "Lucas Bailey",
+      "email": "lucasbailey.work@gmail.com",
+      "role": "Participant",
+      "publicKey": "GALJZNLIPTOOTMHPJOEJHG2RQQCR5KBHJGPQ5IWJYEWI43XJIQRNGJFN",
+      "feedback": "When splitting in mixed currencies, the FX rate is sourced from a single feed — show the timestamp so I trust the number."
+    },
+    {
+      "id": "hatiin-fb-69",
+      "name": "Samuel Reed",
+      "email": "samuelreed.dev@gmail.com",
+      "role": "Participant",
+      "publicKey": "GAE4K3JVSA3B6JJ3CJSNLL2P4CIEMSFTXWFJTZXPMKYHW4WXKBGFVRVK",
+      "feedback": "The receipt upload accepts JPG but not HEIC; iPhone users hit a silent failure. Auto-convert on the client."
+    },
+    {
+      "id": "hatiin-fb-70",
+      "name": "Henry Walsh",
+      "email": "henrywalsh.dev@gmail.com",
+      "role": "Bill creator",
+      "publicKey": "GC5NCSKNHEEQSQF3D3MHPXZ7JA3QUHNR5VF3UAGMLEFUKZPC72OHCLRY",
+      "feedback": "Bill creator role should be transferable — currently only the creator can edit, but if I leave the group, the bill is stuck."
+    }
+  ],
+  "sheetResponseExportUrl": "https://docs.google.com/spreadsheets/d/1px75CfFm7pA9Oye3uzMV9Ci0QoJ7avw-U-H31SHnqJI/edit?usp=drivesdk",
+  "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfUbeEnzw3YZaJ-D8DbOxhSDprM6N7YH7D2xM2rXMiiz3kWMw/viewform"
+}
