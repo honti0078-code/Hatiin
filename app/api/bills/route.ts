@@ -3,7 +3,6 @@ export const dynamic = 'force-dynamic';
 // several seconds incl. shared-key retries — allow up to 60s on Vercel.
 export const maxDuration = 60;
 
-import { StrKey } from '@stellar/stellar-sdk';
 import type { NextRequest } from 'next/server';
 import { z } from 'zod';
 import { compose } from '@/server/middleware/compose';
@@ -13,14 +12,15 @@ import { withError } from '@/server/middleware/withError';
 import { withRateLimit } from '@/server/middleware/withRateLimit';
 import { AppError } from '@/server/lib/http';
 import { billService } from '@/server/service/bill.service';
+import { isResolvableStellarAddress, resolveFederation } from '@/server/stellar/federation';
 import type { HandlerContext } from '@/server/middleware/compose';
 import { created, ok } from '@/server/lib/http';
 
-const publicKeySchema = z
-  .string()
-  .refine((v) => v.length === 56 && StrKey.isValidEd25519PublicKey(v), {
-    message: 'INVALID_PUBLIC_KEY',
-  });
+// Accepts a raw Stellar public key (G...) or a SEP-2 federation address
+// (name*domain.com) — resolveFederation() turns either into a real public key.
+const publicKeySchema = z.string().refine(isResolvableStellarAddress, {
+  message: 'INVALID_PUBLIC_KEY',
+});
 
 const createBillSchema = z.object({
   title: z.string().min(1).max(100),
@@ -43,21 +43,42 @@ const createBillSchema = z.object({
     .max(20),
 });
 
-async function getBills(_req: NextRequest, ctx: HandlerContext) {
+const listBillsSchema = z.object({
+  status: z.enum(['open', 'settling', 'settled']).optional(),
+  cursor: z.string().datetime({ offset: true }).optional(),
+  limit: z.coerce.number().int().min(1).max(50).default(20),
+});
+
+async function getBills(req: NextRequest, ctx: HandlerContext) {
   const publicKey = ctx.publicKey as string;
-  const myBills = await billService.getByCreator(publicKey);
-  return ok({ bills: myBills });
+  const query = listBillsSchema.parse({
+    status: req.nextUrl.searchParams.get('status') ?? undefined,
+    cursor: req.nextUrl.searchParams.get('cursor') ?? undefined,
+    limit: req.nextUrl.searchParams.get('limit') ?? undefined,
+  });
+  const { bills, nextCursor } = await billService.listByCreator(publicKey, query);
+  return ok({ bills, nextCursor });
 }
 
 async function createBill(req: NextRequest, ctx: HandlerContext) {
   const body = createBillSchema.parse(await req.json());
   // Creator address comes from the body (anonymous flow) or, if absent, from a
   // connected session. Wallet connection is optional — a typed address is enough.
-  const creatorPublicKey = body.creatorPublicKey ?? (ctx.publicKey as string | undefined);
-  if (!creatorPublicKey) {
+  const creatorInput = body.creatorPublicKey ?? (ctx.publicKey as string | undefined);
+  if (!creatorInput) {
     throw new AppError('INVALID_INPUT', 'A creator receiving address is required', 400);
   }
-  const bill = await billService.create(creatorPublicKey, body);
+  // Every address may be a raw public key or a SEP-2 federation name
+  // (e.g. alice*example.com) — resolve them all to real public keys before
+  // they ever reach the database.
+  const creatorPublicKey = (await resolveFederation(creatorInput)).account;
+  const participants = await Promise.all(
+    body.participants.map(async (p) => ({
+      ...p,
+      publicKey: (await resolveFederation(p.publicKey)).account,
+    })),
+  );
+  const bill = await billService.create(creatorPublicKey, { ...body, participants });
   return created({ bill });
 }
 

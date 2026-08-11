@@ -132,6 +132,32 @@ export const billService = {
       .orderBy(sql`${bills.createdAt} desc`);
   },
 
+  async listByCreator(
+    publicKey: string,
+    options: { status?: BillStatus; cursor?: string; limit: number },
+  ): Promise<{ bills: Bill[]; nextCursor: string | null }> {
+    const conditions = [eq(bills.creatorPublicKey, publicKey)];
+    if (options.status) {
+      conditions.push(eq(bills.status, options.status));
+    }
+    if (options.cursor) {
+      conditions.push(sql`${bills.createdAt} < ${new Date(options.cursor)}`);
+    }
+    const rows = await db
+      .select()
+      .from(bills)
+      .where(and(...conditions))
+      .orderBy(sql`${bills.createdAt} desc`)
+      .limit(options.limit + 1);
+    const hasMore = rows.length > options.limit;
+    const page = hasMore ? rows.slice(0, options.limit) : rows;
+    const lastRow = page[page.length - 1];
+    return {
+      bills: page,
+      nextCursor: hasMore && lastRow ? lastRow.createdAt.toISOString() : null,
+    };
+  },
+
   async getBillWithParticipants(id: string): Promise<BillWithParticipants> {
     const [bill] = await db.select().from(bills).where(eq(bills.id, id)).limit(1);
     if (!bill) throw new AppError('NOT_FOUND', 'Bill not found', 404);
@@ -170,12 +196,18 @@ export const billService = {
 
     const now = new Date();
 
-    // Mark participant paid
+    // Guard the flip with status = 'pending' so a concurrent duplicate
+    // submission for the same participant can only ever win once — the
+    // loser's UPDATE affects zero rows instead of double-recording the payment.
     const [updatedParticipant] = await db
       .update(participants)
       .set({ status: 'paid', txHash: input.txHash, paidAt: now })
-      .where(eq(participants.id, participantId))
+      .where(and(eq(participants.id, participantId), eq(participants.status, 'pending')))
       .returning();
+
+    if (!updatedParticipant) {
+      throw new AppError('CONFLICT', 'Participant has already paid', 409);
+    }
 
     // Record payment
     await db.insert(billPayments).values({
@@ -186,24 +218,25 @@ export const billService = {
       amountMinor: input.amountMinor,
     });
 
-    // Update bill paidAmount
-    const newPaidAmount = (BigInt(bill.paidAmountMinor) + BigInt(input.amountMinor)).toString();
-
-    // Check if all participants have paid
-    const allParticipants = await db
-      .select()
+    // Count remaining unpaid participants with a SQL aggregate instead of
+    // pulling every row into JS — this also reads the true post-update state,
+    // so two payments recorded milliseconds apart never race each other's
+    // "is everyone paid" view.
+    const [{ pending }] = await db
+      .select({ pending: sql<number>`count(*) filter (where ${participants.status} <> 'paid')::int` })
       .from(participants)
       .where(eq(participants.billId, billId));
+    const allPaid = pending === 0;
+    const newBillStatus: BillStatus = allPaid ? 'settled' : 'settling';
 
-    const allPaid = allParticipants.every((p) => p.id === participantId ? true : p.status === 'paid');
-
-    const newBillStatus: BillStatus = allPaid ? 'settled' : bill.paidAmountMinor === '0' ? 'settling' : bill.status;
-
+    // Atomic SQL increment — never overwrite paidAmountMinor with a value
+    // computed from a stale JS read, which would silently drop a concurrent
+    // participant's payment.
     const [updatedBill] = await db
       .update(bills)
       .set({
-        paidAmountMinor: newPaidAmount,
-        status: newBillStatus === 'open' ? 'settling' : newBillStatus,
+        paidAmountMinor: sql`(${bills.paidAmountMinor}::bigint + ${input.amountMinor}::bigint)::text`,
+        status: newBillStatus,
         updatedAt: now,
       })
       .where(eq(bills.id, billId))
@@ -262,6 +295,21 @@ export const billService = {
 /** Human-facing ticker for a bill's settlement asset. */
 export function assetLabel(asset: BillAsset): string {
   return asset === 'xlm' ? 'XLM' : 'USDC';
+}
+
+/**
+ * A contract-backed bill only settles when every share lands INSIDE the
+ * SplitEscrow contract via `pay_share` (XLM only). Paying such a bill any
+ * other way sends real funds straight to the creator while the DB marks the
+ * share paid — the contract never sees that contribution, so it can never
+ * reach its total and release the pot, even though the app shows the bill
+ * as fully settled.
+ */
+export function bypassesEscrowSettlement(
+  bill: Pick<Bill, 'contractBillId'>,
+  assetChoice: 'usdc' | 'xlm',
+): boolean {
+  return assetChoice !== 'xlm' && bill.contractBillId !== null;
 }
 
 export function minorToUsdc(minor: string): string {
