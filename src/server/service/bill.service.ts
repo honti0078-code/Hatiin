@@ -1,4 +1,4 @@
-import { and, eq, sql } from 'drizzle-orm';
+import { and, eq, ne, sql } from 'drizzle-orm';
 import { USDC_ASSET_ISSUER_VALUE, env } from '@/server/config/env';
 import {
   escrowClient,
@@ -229,9 +229,11 @@ export const billService = {
     const allPaid = pending === 0;
     const newBillStatus: BillStatus = allPaid ? 'settled' : 'settling';
 
-    // Atomic SQL increment — never overwrite paidAmountMinor with a value
-    // computed from a stale JS read, which would silently drop a concurrent
-    // participant's payment.
+    const statusGuard =
+      newBillStatus === 'settled'
+        ? and(eq(bills.id, billId), ne(bills.status, 'settled'))
+        : and(eq(bills.id, billId), eq(bills.status, 'open'));
+
     const [updatedBill] = await db
       .update(bills)
       .set({
@@ -239,8 +241,12 @@ export const billService = {
         status: newBillStatus,
         updatedAt: now,
       })
-      .where(eq(bills.id, billId))
+      .where(statusGuard)
       .returning();
+
+    if (!updatedBill) {
+      throw new AppError('CONFLICT', 'Bill state changed concurrently, retry', 409);
+    }
 
     logger.info('bill.payment_recorded', {
       billId,
