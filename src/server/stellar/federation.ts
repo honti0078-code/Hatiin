@@ -24,6 +24,11 @@ function isLikelyPubkey(input: string): boolean {
   return StrKey.isValidEd25519PublicKey(input);
 }
 
+export function isResolvableStellarAddress(input: string): boolean {
+  if (isLikelyPubkey(input)) return true;
+  return parseName(input) !== null;
+}
+
 function parseName(input: string): { name: string; domain: string } | null {
   const star = input.match(NAME_STAR_RE);
   if (star) return { name: star[1].toLowerCase(), domain: star[2].toLowerCase() };
