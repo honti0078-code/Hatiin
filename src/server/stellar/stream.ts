@@ -86,6 +86,7 @@ export async function watchAccountPayments(opts: WatchOptions): Promise<void> {
   // Default to 'now' so the watcher only picks up payments made after it
   // starts, preventing historical payments from matching new invoices.
   let cursor = opts.cursor ?? 'now';
+  let lastPagingToken: string | undefined;
   let mode: 'stream' | 'polling' = 'stream';
 
   while (!opts.signal.aborted) {
@@ -96,8 +97,12 @@ export async function watchAccountPayments(opts: WatchOptions): Promise<void> {
           usdcOnly,
           cursor,
           signal: opts.signal,
-          onMatch: opts.onMatch,
+          onMatch: async (payment) => {
+            lastPagingToken = payment.paymentId;
+            await opts.onMatch(payment);
+          },
         });
+        if (lastPagingToken) cursor = lastPagingToken;
         // Stream ended cleanly (server closed) — fall through to retry.
       } catch (err) {
         streamFailures += 1;
