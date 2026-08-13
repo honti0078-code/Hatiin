@@ -30,7 +30,8 @@ function num(v: unknown): number {
   return typeof v === 'number' ? v : Number(v ?? 0);
 }
 
-export async function getUsageStats(): Promise<UsageStats> {
+export async function getUsageStats(days = 14): Promise<UsageStats> {
+  const safeDays = Math.max(1, Math.min(90, days));
   const demo = sql.raw(`('${DEMO_KEYS.join("','")}')`);
 
   const [wallets] = await rows(
@@ -58,7 +59,7 @@ export async function getUsageStats(): Promise<UsageStats> {
   const perDay = await rows(
     sql`select to_char(created_at,'YYYY-MM-DD') date, count(distinct public_key)::int users, count(*)::int logins
         from hatiin_sessions where public_key not in ${demo}
-        group by 1 order by 1 desc limit 14`,
+        group by 1 order by 1 desc limit ${safeDays}`,
   );
 
   return {
