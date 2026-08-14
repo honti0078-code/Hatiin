@@ -8,10 +8,13 @@ import type { HandlerContext } from '@/server/middleware/compose';
 import { withRateLimit } from '@/server/middleware/withRateLimit';
 import { ok } from '@/server/lib/http';
 import { usdcCode, usdcIssuer } from '@/server/stellar/network';
+import { z } from 'zod';
+
+const idSchema = z.string().uuid();
 
 async function getBill(req: NextRequest, ctx: HandlerContext) {
   const params = await ctx.params;
-  const id = params?.id as string;
+  const id = idSchema.parse(params?.id);
   const bill = await billService.getBillWithParticipants(id);
   const participants = bill.participants.map((participant) => ({
     ...participant,
