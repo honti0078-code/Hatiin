@@ -12,13 +12,21 @@ import { useSession } from '@/ui/hooks/useSession';
 type Participant = { publicKey: string; displayName: string };
 
 function usdcToMinor(usdc: string): string {
-  const num = parseFloat(usdc);
-  if (Number.isNaN(num) || num <= 0) return '0';
-  return Math.round(num * 1_000_000).toString();
+  const trimmed = usdc.trim();
+  if (!/^\d+(\.\d+)?$/.test(trimmed)) return '0';
+  const [wholeRaw, fractionRaw = ''] = trimmed.split('.');
+  const fraction = fractionRaw.slice(0, 6).padEnd(6, '0');
+  const whole = wholeRaw === '' ? '0' : wholeRaw;
+  return `${whole}${fraction}`.replace(/^0+(?=\d)/, '');
 }
 
+// SEP-2 federation address, e.g. alice*example.com — resolved to a real
+// public key server-side. Mirrors the shape isResolvableStellarAddress()
+// accepts so the client never rejects an address the server would resolve.
+const FEDERATION_ADDRESS_RE = /^[a-z0-9\-.+_]{1,64}[*@][a-z0-9\-.]{1,253}\.[a-z]{2,}$/i;
+
 function isValidStellarAddress(v: string): boolean {
-  return v.length === 56 && StrKey.isValidEd25519PublicKey(v);
+  return (v.length === 56 && StrKey.isValidEd25519PublicKey(v)) || FEDERATION_ADDRESS_RE.test(v);
 }
 
 export default function CreateBillPage() {
@@ -72,13 +80,13 @@ export default function CreateBillPage() {
     // server, which falls back to a connected session cookie if present — this
     // avoids a race where the session key has not loaded yet for connected users.
     if (receivingAddress && !isValidStellarAddress(receivingAddress)) {
-      newErrors.creator = 'Invalid Stellar address (must be a valid G... key)';
+      newErrors.creator = 'Invalid Stellar address (G... key or name*domain.com)';
     }
     const amount = parseFloat(totalUsdc);
     if (Number.isNaN(amount) || amount <= 0) newErrors.totalUsdc = 'Enter a valid amount';
     participants.forEach((p, i) => {
       if (!p.displayName.trim()) newErrors[`name_${i}`] = 'Name required';
-      if (!isValidStellarAddress(p.publicKey.trim())) newErrors[`pk_${i}`] = 'Invalid Stellar address (G...)';
+      if (!isValidStellarAddress(p.publicKey.trim())) newErrors[`pk_${i}`] = 'Invalid Stellar address (G... key or name*domain.com)';
     });
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -170,7 +178,7 @@ export default function CreateBillPage() {
                   setCreatorTouched(true);
                   setCreatorAddress(e.target.value);
                 }}
-                placeholder="Your Stellar address where you get paid (G...)"
+                placeholder="Your Stellar address (G...) or federation address (name*domain.com)"
                 className="w-full px-3 py-2.5 rounded-lg border border-gray-200 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent"
               />
               {connected && receivingAddress === session.publicKey && !creatorTouched ? (
@@ -327,7 +335,7 @@ export default function CreateBillPage() {
                       type="text"
                       value={p.publicKey}
                       onChange={(e) => updateParticipant(i, 'publicKey', e.target.value)}
-                      placeholder="Stellar wallet address (G...)"
+                      placeholder="Stellar wallet address (G...) or name*domain.com"
                       className="w-full px-3 py-2 rounded-lg border border-amber-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent font-mono"
                     />
                     {errors[`pk_${i}`] && (

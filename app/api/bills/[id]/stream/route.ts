@@ -67,7 +67,7 @@ async function streamBillUpdates(req: NextRequest, ctx: HandlerContext) {
             if (bill.status === 'settled' || bill.contractBillId) return;
             watchAccountPayments({
               destination: bill.creatorPublicKey,
-              asset: bill.asset,
+              usdcOnly: bill.asset !== 'xlm',
               signal: abort.signal,
               onMatch: async (payment) => {
                 const current = await billService.getBillWithParticipants(billId);
