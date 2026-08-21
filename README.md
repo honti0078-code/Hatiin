@@ -6,7 +6,8 @@
 
 - [x] **Public GitHub repository** — link public repo
 - [x] **Minimum 20+ meaningful commits** — see commit history on `main`
-- [x] **Live deployed application** — https://hatiin-stellar.vercel.app
+- [x] **Live deployed application** — https://hatiin-stellar.vercel.app (Stellar Mainnet)
+- [x] **Operator wallet** — [`GAZBLDXXGPQUHAIICMVDTFJ2PNWG5T7ZFIMQIWFBG6BK3V3YF45OKMMV`](https://stellar.expert/explorer/public/account/GAZBLDXXGPQUHAIICMVDTFJ2PNWG5T7ZFIMQIWFBG6BK3V3YF45OKMMV)
 - [x] **PPT/Pitch deck link** — [View Pitch Deck](https://docs.google.com/presentation/d/17s0_RDkySOHBTQfXyDRjzWN80SoiKlMc/edit?usp=sharing)
 - [x] **Demo video link** — [Watch Demo (create bill)](https://drive.google.com/file/d/1NElTD3LuafupNx4yMmqI7KCEOfly6zca/view?usp=sharing) · [Part 2 (member 1 pays)](https://drive.google.com/file/d/1yHr6UCVxyUoQ3WjMdZmq0bWA4d0Lzo7D/view?usp=sharing) · [Part 3 (member 2 pays)](https://drive.google.com/file/d/1gDFIkH9zX3RSdSN6nbw64ePSIqBEWNCH/view?usp=sharing)
 
